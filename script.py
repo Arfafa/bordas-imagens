@@ -4,8 +4,6 @@ import numpy as np
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
-# from mpl_toolkits.mplot3d import Axes3D
-
 PATH = 'images'
 IMAGES_LIST = os.listdir(PATH)
 SIGMA = np.linspace(2, 10, 9)
@@ -25,7 +23,7 @@ def gaussian2D(sigma):
     z = z/(2*sigma**2)
     z = np.exp(-z)
 
-    return x, y, z
+    return z
 
 
 def laplacian2D():
@@ -34,23 +32,7 @@ def laplacian2D():
 
     z = -(x**2 + y**2)
 
-    return x, y, z
-
-
-def plot_curves3D(x, y, z, shz):
-    plt.figure()
-    ax = plt.axes(projection='3d')
-
-    ax.contour3D(x, y, z, 50, cmap='gray')
-    ax.contour3D(x, y, shz, 50, cmap='hot')
-
-    ax.set_xlabel('x')
-    ax.set_ylabel('y')
-    ax.set_zlabel('z')
-
-    plt.axis([-128, 128, -128, 128])
-
-    plt.show()
+    return z
 
 
 def find_boards(img):
@@ -102,12 +84,12 @@ def main():
     if(BIN_IMAGES_DIR not in os.listdir()):
         os.mkdir(BIN_IMAGES_DIR)
 
-    x, y, z = laplacian2D()
+    z = laplacian2D()
     shifted_laplacian = np.fft.ifftshift(z)
 
     for sig in SIGMA:
 
-        x, y, z = gaussian2D(sig)
+        z = gaussian2D(sig)
         shifted_gaussian = np.fft.ifftshift(z)
 
         for image in IMAGES_LIST:
