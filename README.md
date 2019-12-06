@@ -26,7 +26,7 @@ Vamos à cada um deles e um pouco sobre a teoria envolvida em cada etapa.
 
 ### dog\_images 
 
-Este diretório armazena os resultado obtido após uma imagem passar pelo procedimento 
+Este diretório armazena o resultado obtido após uma imagem passar pelo procedimento 
 [DoG](https://en.wikipedia.org/wiki/Difference_of_Gaussians), o qual, em suma, consiste em 
 realizar uma [convolução](https://en.wikipedia.org/wiki/Convolution) da imagem com uma gaussiana.
 
@@ -45,3 +45,21 @@ pode ser feita sem problemas!
 
 Após isso, basta fazermos a [Transformada Inversa de Fourier](https://en.wikipedia.org/wiki/Fourier_inversion_theorem) 
 e plotar o resultado final.
+
+### log\_images
+
+Este diretório armazena o resultado obtido após uma imagem passar pelo procedimento 
+[LoG](https://homepages.inf.ed.ac.uk/rbf/HIPR2/log.htm), o qual dá um passo além em relação ao processo DoG 
+citado anteriormente. O LoG consiste em aplicar o [Operador Laplaciano](https://en.wikipedia.org/wiki/Laplace_operator) 
+sobre o resultado do DoG.
+
+Porém, uma forma mais simples de aplicar este operador é no mesmo espaço encontrado através da Transformada de Fourier. 
+Neste espaço, a [derivada de segunda ordem](https://en.wikipedia.org/wiki/Second_derivative) presente no Laplaciano 
+dá lugar a uma operação mais simples dada por:
+
+![equation](https://latex.codecogs.com/gif.latex?L&space;=&space;-(x^2&space;&plus;&space;y^2))
+
+Após realizar a multiplicação do resultado obtido pelo DoG com a equação acima, basta realizar a Transformada Inversa 
+de Fourier e plotar o resultado final.
+
+
