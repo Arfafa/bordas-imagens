@@ -39,12 +39,12 @@ sobre a imagem (a gaussiana também deveria passar por este processo, porém a t
 uma gaussiana, logo podemos criar as nossas já neste espaço, sem se precoupar em realizar a sua transformada) 
 podemos apenas, ao invés da convolução, realizar uma simples multiplicação entre as duas funções.
 
-Neste ponto, devemos ter cuidado de não cair na tentação de multiplicarmos as funções sem antes realizarmos 
-um deslocamento da gaussiana para que seu referencial esteja de acordo com o da imagem. Após isso, a multiplicação 
-pode ser feita sem problemas!
+Neste ponto, devemos ter cuidado de não cair na tentação de multiplicarmos as funções sem antes realizarmos um 
+[deslocamento da gaussiana](https://docs.scipy.org/doc/numpy/reference/generated/numpy.fft.ifftshift.html#numpy.fft.ifftshift) 
+para que seu referencial esteja de acordo com o da imagem. Após isso, a multiplicação pode ser feita sem problemas!
 
 Após isso, basta fazermos a [Transformada Inversa de Fourier](https://en.wikipedia.org/wiki/Fourier_inversion_theorem) 
-e plotar o resultado final.
+e plotar o resultado.
 
 ### log\_images
 
@@ -59,7 +59,23 @@ dá lugar a uma operação mais simples dada por:
 
 ![equation](https://latex.codecogs.com/gif.latex?L&space;=&space;-(x^2&space;&plus;&space;y^2))
 
-Após realizar a multiplicação do resultado obtido pelo DoG com a equação acima, basta realizar a Transformada Inversa 
-de Fourier e plotar o resultado final.
+Enretanto, antes de realizar a multiplicação do DoG com a equação acima, esta deve passar pelo mesmo processo 
+de deslocamento para alinhar o referencial do Laplaciano com o da imagem. Após isso, a multiplicação pode ser 
+realizada sem grandes problemas (assim como Transformada Inversa de Fourier) e o resultado pode ser plotado.
 
+### lim\_images
 
+Este diretório armazena o resultado obtido após uma imagem passar pelo procedimento de 
+[limiarização](https://en.wikipedia.org/wiki/Thresholding_(image_processing)).
+
+Este processo consiste em fazer com que os pixels com valores maiores que zero tenham seu valor alterado para 
+1 (branco), e, caso contrário, o valor é modificado para zero (preto). Após esta binarização da imagem o resultado 
+é plotado.
+
+### borders
+
+Este diretório armazena o resultado obtido após uma imagem passar por um procedimento que busca ressaltar 
+as bordas dos objetos presentes na mesma. Para isso, é utilizado um processo conhecido como 
+[Vizinhança-4](http://www.facom.ufu.br/~backes/gsi058/Aula03-Conectividade.pdf) que consiste em analisar 
+os pixels brancosr. Caso o pixel em questão possua algum vizinho preto ele está na borda e permanece branco, 
+do contrário, ele se encontra no interior do objeto e seu valor é trocado para zero (preto).
