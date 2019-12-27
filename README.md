@@ -4,7 +4,7 @@ oferecida pelo programa de Pós-Graduação do Instituto de Física de São Carl
 
 ## Como Funciona?
 
-A objetivo deste programa é reconhecer as bordas dos objetos presentes nas 
+O objetivo deste programa é reconhecer as bordas dos objetos presentes nas 
 imagens fornecidas. Para tanto, foram escolhidas imagens 256x256 em escala de cinza, 
 as quais estão presentes no arquivo imagens.tar.gz. Para descompactar este arquivo, 
 basta o comando:
