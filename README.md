@@ -10,13 +10,13 @@ as quais estão presentes no arquivo imagens.tar.gz. Para descompactar este arqu
 basta o comando:
 
 ```bash
-tar -xzf imagens.tar.gz
+$ tar -xzf imagens.tar.gz
 ```
 
 Em seguida, o programa pode ser executado pelo comando:
 
 ```bash
-python script.py
+$ python script.py
 ```
 
 Após a execução do programa, alguns diretórios serão criados no diretório onde o 
